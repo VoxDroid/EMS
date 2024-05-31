@@ -1,0 +1,214 @@
+<style>
+.custom-button-ind {
+    background-color: #161c27;
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.custom-button-ind:hover {
+    background-color: #273447;
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    scale: 1.1;
+    transition: scale 0.3s;
+}
+/* Dark Bluish Green Button */
+.custom-button-green {
+    background-color: #2a5f4d; /* Dark bluish green */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button-green:hover {
+    background-color: #3b7964; /* Slightly lighter dark bluish green */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+/* Dark Bluish Red Button */
+.custom-button-red {
+    background-color: #572a3d; /* Dark bluish red */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button-red:hover {
+    background-color: #734255; /* Slightly lighter dark bluish red */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+.custom-button-delete {
+    background-color: #b34700; /* Dark orange */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button-delete:hover {
+    background-color: #cc5200; /* Slightly lighter dark orange */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+/* Dark Bluish Purple Button */
+.custom-button-purple {
+    background-color: #4b2e83; /* Dark bluish purple */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button-purple:hover {
+    background-color: #6340a4; /* Slightly lighter dark bluish purple */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+/* Like Button (Dark Bluish Green) */
+.custom-button-like {
+    background-color: #2a5f4d; /* Dark bluish green */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button-like:hover {
+    background-color: #3b7964; /* Slightly lighter dark bluish green */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Dislike Button (Dark Bluish Red) */
+.custom-button-dislike {
+    background-color: #572a3d; /* Dark bluish red */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button-dislike:hover {
+    background-color: #734255; /* Slightly lighter dark bluish red */
+    border: none;
+    color: #ffffff;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+.custom-page-link {
+background-color: #161c27;
+border: none;
+color: #ffffff;
+padding: 7px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+
+.custom-page-link:hover {
+background-color: #273447;
+border: none;
+color: #ffffff;
+padding: 7px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+
+.active>.custom-page-link {
+background-color: #2a3244;
+border: none;
+color: #ffffff;
+padding: 10px 20px 10px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+
+.disabled>.custom-page-link { 
+background-color: #72839e;
+border: none;
+color: #ffffff;
+padding: 7px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+</style>
