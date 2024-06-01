@@ -14,6 +14,12 @@
     <img alt="License" src="https://img.shields.io/github/license/VoxDroid/EMS?style=flat-square&svg=true">
 </div>
 
+<p align="center">
+  <a href="https://ko-fi.com/O4O6LO7Q1" target="_blank">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi" style="border: 0;">
+  </a>
+</p>
+
 ## Introduction
 
 Welcome to EMS (Event Management System), an open-source project designed to simplify event organization and facility management. This system provides a centralized platform for scheduling, managing event details, and enhancing community engagement.
