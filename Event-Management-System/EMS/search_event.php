@@ -75,7 +75,7 @@ if (isset($_GET['q'])) {
     <?php require '../PARTS/CSS.php'; ?>
 
     <!-- Pagination CSS -->
-    <?php require '../ASSETS/CSS/pagination_cards.css'; ?>
+    <?php require '../ASSETS/CSS/custom_design.css'; ?>
     <style>
         body {
             background-color: #1c2331;

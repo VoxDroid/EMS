@@ -58,7 +58,7 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
 
     <!-- CSS.PHP -->
     <?php require '../PARTS/CSS.php'; ?>
-    <?php require '../ASSETS/CSS/pagination_cards.css'; ?>
+    <?php require '../ASSETS/CSS/custom_design.css'; ?>
 </head>
 <body>
 <!-- Header -->

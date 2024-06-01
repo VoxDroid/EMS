@@ -1,4 +1,7 @@
 <style>
+html, body {    
+        font-family: Poppins, sans-serif;
+}
 .sticky-top {
     position: fixed;
     top: 0;
@@ -154,7 +157,7 @@ HTML;
 HTML;
     } else {
         echo <<<HTML
-        <a href="EMS/login.php" class="btn btn-light">Login</a>
+        <a href="EMS/login.php" class="btn btn-light custom-dropdown-toggle">Login</a>
 HTML;
     }
 
@@ -237,7 +240,7 @@ HTML;
             HTML;
                 } else {
                     echo <<<HTML
-                    <a href="../EMS/login.php" class="btn btn-light">Login</a>
+                    <a href="../EMS/login.php" class="btn btn-light custom-dropdown-toggle">Login</a>
             HTML;
                 }
             

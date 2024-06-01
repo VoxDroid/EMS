@@ -69,7 +69,7 @@ try {
     <!-- CSS.PHP -->
     <?php
     require '../PARTS/CSS.php';
-    require '../ASSETS/CSS/pagination_cards.css';
+    require '../ASSETS/CSS/custom_design.css';
     ?>
 </head>
 <body>

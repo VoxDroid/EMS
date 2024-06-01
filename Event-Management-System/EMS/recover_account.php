@@ -85,7 +85,7 @@ try {
     <style>
         body {
             background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
+            font-family: Poppins, sans-serif;
         }
         .recover-container {
             max-width: 400px;

@@ -17,8 +17,8 @@ if ($current_page === 'index.php') {
     <link href="ASSETS/CSS/bootstrap-icons.css" rel="stylesheet">
     <link href="ASSETS/CSS/FA-all.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="ASSETS/CSS/custom_style.css" rel="stylesheet">
+    <!-- Internal CSS -->
+    <link href="ASSETS/CSS/custom_design.css" rel="stylesheet" >
 HTML;
 } else {
     // Include links for other pages (assuming they are in a subdirectory)
@@ -35,9 +35,9 @@ HTML;
     <link href="../ASSETS/CSS/bootstrap-icons.min.css" rel="stylesheet">
     <link href="../ASSETS/CSS/bootstrap-icons.css" rel="stylesheet">
     <link href="../ASSETS/CSS/FA-all.min.css" rel="stylesheet">
-
-    <!-- UPPER Custom CSS -->
-    <link href="../ASSETS/CSS/custom_style.css" rel="stylesheet">
+    
+    <!-- Internal CSS -->
+    <link href="../ASSETS/CSS/custom_design.css" rel="stylesheet" >
 HTML;
 }
 ?>

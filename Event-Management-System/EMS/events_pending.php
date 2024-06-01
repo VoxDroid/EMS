@@ -30,7 +30,7 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
     <!-- CSS.PHP -->
     <?php require '../PARTS/CSS.php'; ?>
 
-    <?php require '../ASSETS/CSS/pagination_cards.css' ?>
+    <?php require '../ASSETS/CSS/custom_design.css' ?>
 
     <!-- Custom CSS -->
     <style>
@@ -122,8 +122,16 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
                     echo '</div>'; // .col-md-6
                 }
             } else {
-                echo '<div class="col-md-12">';
-                echo '<p class="text-white">No pending events found.</p>';
+                echo '<div class="no-events-found">';
+                echo '<div class="no-events-content">';
+                echo '<h4>No Pending Events</h4>';
+                echo '<p>It seems quiet around here. Check back later or explore other sections of our site!</p>';
+                echo '<div class="no-events-animation">';
+                echo '<div class="no-events-circle"></div>';
+                echo '<div class="no-events-circle"></div>';
+                echo '<div class="no-events-circle"></div>';
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
             }
 

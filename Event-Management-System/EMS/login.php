@@ -96,7 +96,7 @@ if ($_SESSION['login_attempts'] >= 8 && isset($_SESSION['last_login_attempt_time
     <style>
         body {
             background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
+            font-family: Poppins, sans-serif;
         }
         .login-container {
             max-width: 400px;

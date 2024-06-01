@@ -31,139 +31,8 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
 
     <!-- CSS.PHP -->
     <?php require 'PARTS/CSS.php'; ?>
-    <?php require 'ASSETS/CSS/pagination_cards.css'; ?>
+    <?php require 'ASSETS/CSS/custom_design.css'; ?>
 
-    <!-- Internal CSS -->
-    <style>
-    /* Event Cards */
-    .event-card {
-        border: none;
-        transition: box-shadow 0.3s;
-        border-radius: 10px;
-    }
-    .event-card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .card-body {
-        padding: 20px;
-    }
-    .profile-picture {
-        border: 2px solid #fff;
-    }
-    .event-description {
-        color: #555;
-        font-size: 0.95rem;
-    }
-    .like-dislike img {
-        margin-right: 5px;
-    }
-    /* Custom Styling */
-    hr {
-    opacity: 1;
-    }
-    .custom-heading {
-        align-items: center;
-        font-size: 2rem;
-        text-decoration: none;
-        display: inline-flex;
-        position: relative;
-        padding: 10px 15px; 
-        transition: color 0.3s ease; 
-    }
-    .custom-heading .bi {
-        margin-left: 10px;
-        position: relative;
-        transition: transform 0.3s ease;
-    }
-    .custom-heading.white-background {
-        color: #161c27;
-    }
-    .custom-heading.white-background:hover .bi {
-        color: #34495e;
-        transform: translateX(10px); 
-    }
-    .custom-heading.white-background:hover {
-        color: #34495e;
-    }
-    .custom-heading.blue-background {
-        color: #ffffff;
-    }
-    .custom-heading.blue-background:hover .bi {
-        color: #c0c0c0;
-        transform: translateX(10px);
-    }
-    .custom-heading.blue-background:hover {
-        color: #c0c0c0;
-    }
-    .custom-heading:hover {
-        scale: 1.02;
-        transition: scale 0.3s;
-    }
-    /* Carousel Controls */
-    .carousel-control-prev,
-    .carousel-control-next {
-        color: #fff;
-        background-color: rgba(23, 34, 47, 0.8);
-        width: 50px;
-        height: 50px;
-        border: 2px solid rgba(200, 200, 255, 0.5);
-        border-radius: 50%;
-        font-size: 24px;
-        line-height: 50px;
-        text-align: center;
-        position: absolute; 
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-        z-index: 10;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .carousel-control-prev {
-        left: -110px;
-    }
-    .carousel-control-next {
-        right: -110px;
-    }
-    .carousel-control-prev:hover,
-    .carousel-control-next:hover {
-        background-color: rgba(30, 46, 62, 0.8);
-        transform: translateY(-50%) scale(1.1);
-        border-color: rgba(200, 200, 255, 0.7);
-    }
-    .carousel-indicators{
-        bottom: -50px;
-    }
-    .carousel-indicators li {
-        position: relative;
-        bottom: -20px;
-        background-color: rgba(170, 178, 189, 0.7);
-        border: 2px solid rgba(200, 200, 255, 0.5);
-        border-radius: 50%;
-        width: 12px;
-        height: 12px;
-        margin: 0 5px;
-        cursor: pointer;
-        list-style: none;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-    .carousel-indicators li.active {
-        background-color: rgba(39, 52, 71, 0.8);
-        border-color: rgba(200, 200, 255, 0.7);
-    }
-    /* Carousel Control Icons */
-    .carousel-control-next-icon,
-    .carousel-control-prev-icon {
-        width: 20px;
-        height: 20px;
-    }
-    /* Additional Styling for Control Icons */
-    .carousel-control-prev-icon::before,
-    .carousel-control-next-icon::before {
-        font-size: 20px;
-        color: #fff;
-    }
-    </style>
 </head>
 <body>
     
@@ -258,7 +127,17 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
                         $first = false;
                     }
                 } else {
-                    echo '<p class="text-white">No ongoing events found.</p>';
+                    echo '<div class="no-events-found">';
+                    echo '<div class="no-events-content">';
+                    echo '<h4>No Ongoing Events</h4>';
+                    echo '<p>It seems quiet around here. Check back later or explore other sections of our site!</p>';
+                    echo '<div class="no-events-animation">';
+                    echo '<div class="no-events-circle"></div>';
+                    echo '<div class="no-events-circle"></div>';
+                    echo '<div class="no-events-circle"></div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
                 ?>
             </div>
@@ -363,7 +242,17 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
                         $first = false;
                     }
                 } else {
-                    echo '<p>No approved events found.</p>';
+                    echo '<div class="no-events-found">';
+                    echo '<div class="no-events-content">';
+                    echo '<h4>No Approved Events</h4>';
+                    echo '<p>It seems quiet around here. Check back later or explore other sections of our site!</p>';
+                    echo '<div class="no-events-animation">';
+                    echo '<div class="no-events-circle"></div>';
+                    echo '<div class="no-events-circle"></div>';
+                    echo '<div class="no-events-circle"></div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
                 ?>
             </div>
@@ -470,8 +359,16 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
                     echo '</div>'; // .col-md-6
                 }
             } else {
-                echo '<div class="col-md-12">';
-                echo '<p class="text-white">No pending events found.</p>';
+                echo '<div class="no-events-found">';
+                echo '<div class="no-events-content">';
+                echo '<h4>No Pending Events</h4>';
+                echo '<p>It seems quiet around here. Check back later or explore other sections of our site!</p>';
+                echo '<div class="no-events-animation">';
+                echo '<div class="no-events-circle"></div>';
+                echo '<div class="no-events-circle"></div>';
+                echo '<div class="no-events-circle"></div>';
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
             }
 
@@ -589,8 +486,16 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
                     echo '</div>'; // .col-md-6
                 }
             } else {
-                echo '<div class="col-md-12">';
-                echo '<p>No archived events found.</p>';
+                echo '<div class="no-events-found">';
+                echo '<div class="no-events-content">';
+                echo '<h4>No Archived Events</h4>';
+                echo '<p>It seems quiet around here. Check back later or explore other sections of our site!</p>';
+                echo '<div class="no-events-animation">';
+                echo '<div class="no-events-circle"></div>';
+                echo '<div class="no-events-circle"></div>';
+                echo '<div class="no-events-circle"></div>';
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
             }
 
