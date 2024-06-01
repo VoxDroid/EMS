@@ -1,9 +1,11 @@
 <style>
+
 * {
     font-family: Poppins, sans-serif;
 }
 body {
     background-color: #f8f9fa;
+    font-family: Poppins, sans-serif;
 }
 .navbar {
     background-color: #343a40 !important;
@@ -159,56 +161,6 @@ body {
     font-size: 16px;
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
-/* Like Button (Dark Bluish Green) */
-.custom-button-like {
-    background-color: #2a5f4d; /* Dark bluish green */
-    border: none;
-    color: #ffffff;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effect */
-}
-
-.custom-button-like:hover {
-    background-color: #3b7964; /* Slightly lighter dark bluish green */
-    border: none;
-    color: #ffffff;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
-/* Dislike Button (Dark Bluish Red) */
-.custom-button-dislike {
-    background-color: #572a3d; /* Dark bluish red */
-    border: none;
-    color: #ffffff;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition: transform 0.3s, background-color 0.3s; /* Smooth transition for hover effect */
-}
-
-.custom-button-dislike:hover {
-    background-color: #734255; /* Slightly lighter dark bluish red */
-    border: none;
-    color: #ffffff;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
 
 .custom-page-link {
 background-color: #161c27;
@@ -331,6 +283,10 @@ font-size: 16px;
 }
 .profile-picture {
     border: 2px solid #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular profile picture */
+    margin-right: 15px; /* Space between image and text */
 }
 .event-description {
     color: #555;
@@ -448,5 +404,92 @@ opacity: 1;
 
 hr {
     opacity: 1;
+}
+.custom-card {
+    background-color: #161c27; /* Dark background color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the card */
+    color: #ffffff; /* Text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin: 20px 0; /* Margin around the card */
+    font-family: 'Arial', sans-serif;
+}
+
+.custom-card-header {
+    background-color: #273447; /* Slightly lighter background color */
+    border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+    padding: 10px 20px; /* Padding inside the header */
+}
+
+.custom-card-title {
+    margin: 0; /* No margin */
+    font-size: 24px; /* Font size for title */
+}
+
+.custom-card-body {
+    padding: 20px; /* Padding inside the body */
+}
+
+.user-info {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+.user-name {
+    font-size: 18px; /* Font size for user name */
+}
+
+.custom-separator {
+    border-color: #ffffff; /* Separator color */
+    opacity: 0.2; /* Slightly transparent */
+}
+
+.event-details-grid {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 20px; /* Space between grid items */
+}
+
+.grid-item {
+    background-color: #1d2634; /* Slightly lighter background color */
+    padding: 15px; /* Padding inside grid items */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.event-remarks {
+    margin-top: 20px; /* Space above remarks */
+}
+
+.custom-button-like,
+.custom-button-dislike {
+    background-color: #1d2634; /* Button background color */
+    border: none; /* No border */
+    color: #ffffff; /* Text color */
+    padding: 10px 20px; /* Padding inside the button */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No text decoration */
+    display: inline-block; /* Inline-block display */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    width: 130px;
+}
+
+.custom-button-like:hover,
+.custom-button-dislike:hover {
+    background-color: #273447; /* Hover background color */
+}
+
+.btn-group {
+    display: flex; /* Align buttons horizontally */
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center buttons */
+    margin-top: 20px; /* Space above button group */
+}
+
+.like-form,
+.dislike-form {
+    display: inline-block; /* Inline-block display */
 }
 </style>

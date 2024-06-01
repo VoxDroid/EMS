@@ -103,53 +103,53 @@ try {
             
                 // Display event details
                 if ($eventDetails) {
-                    echo '<div class="card mb-4">';
-                    echo '<div class="card-header text-white" style="background-color: #161c27;">';
-                    echo '<h4 class="card-title p-2">Event Details</h4>';
+                    echo '<div class="custom-card mb-4">';
+                    echo '<div class="custom-card-header">';
+                    echo '<h4 class="custom-card-title">Event Details</h4>';
                     echo '</div>';
-                    echo '<div class="card-body">';
+                    echo '<div class="custom-card-body">';
                     
                     // User Information
-                    echo '<div class="d-flex align-items-center mb-3">';
-                    echo '<img src="' . htmlspecialchars($eventDetails['requester_profile_picture'], ENT_QUOTES, 'UTF-8') . '" alt="Profile Picture" class="rounded-circle me-3" style="width: 50px; height: 50px;">';
-                    echo '<h6 class="mb-0"><strong>User:</strong> ' . htmlspecialchars($eventDetails['requester_username'], ENT_QUOTES, 'UTF-8') . '</h6>';
+                    echo '<div class="user-info mb-3">';
+                    echo '<img src="' . htmlspecialchars($eventDetails['requester_profile_picture'], ENT_QUOTES, 'UTF-8') . '" alt="Profile Picture" class="profile-picture">';
+                    echo '<h6 class="user-name">User: ' . htmlspecialchars($eventDetails['requester_username'], ENT_QUOTES, 'UTF-8') . '</h6>';
                     echo '</div>';
-
+                
                     // Separator line
-                    echo '<hr class="my-4">';
-            
+                    echo '<hr class="custom-separator">';
+                    
                     // Event Details Grid
-                    echo '<div class="row">';
-                    echo '<div class="col-md-6">';
+                    echo '<div class="event-details-grid">';
+                    echo '<div class="grid-item">';
                     echo '<p><strong>Title:</strong> ' . htmlspecialchars($eventDetails['title'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '<p><strong>Description:</strong> ' . nl2br(htmlspecialchars($eventDetails['description'], ENT_QUOTES, 'UTF-8')) . '</p>';
                     echo '<p><strong>Facility:</strong> ' . htmlspecialchars($eventDetails['facility'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '</div>';
-                    echo '<div class="col-md-6">';
+                    echo '<div class="grid-item">';
                     echo '<p><strong>Duration:</strong> ' . htmlspecialchars($eventDetails['duration'], ENT_QUOTES, 'UTF-8') . ' hrs</p>';
                     echo '<p><strong>Date Requested:</strong> ' . htmlspecialchars($eventDetails['date_requested'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '<p><strong>Status:</strong> ' . htmlspecialchars($eventDetails['status'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '</div>';
-                    echo '<div class="col-md-6">';
+                    echo '<div class="grid-item">';
                     echo '<p><strong>Event Start:</strong> ' . htmlspecialchars($eventDetails['event_start'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '<p><strong>Event End:</strong> ' . htmlspecialchars($eventDetails['event_end'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '</div>';
-                    echo '<div class="col-md-6">';
+                    echo '<div class="grid-item">';
                     echo '<p><strong>Likes:</strong> ' . htmlspecialchars($eventDetails['likes'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '<p><strong>Dislikes:</strong> ' . htmlspecialchars($eventDetails['dislikes'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '</div>';
-                    echo '</div>'; // end row
-            
+                    echo '</div>'; // end event-details-grid
+                    
                     // Event Remarks
-                    echo '<div class="mt-3">';
+                    echo '<div class="event-remarks">';
                     echo '<h6><strong>Remarks:</strong></h6>';
                     echo '<p>' . nl2br(htmlspecialchars($eventDetails['remarks'], ENT_QUOTES, 'UTF-8')) . '</p>';
                     echo '</div>';
-
-                    echo '<hr class="my-4">';
+                
+                    echo '<hr class="custom-separator">';
                     
                     // Display like and dislike buttons only for logged-in users
-                    if(isset($_SESSION['user_id'])) {
+                    if (isset($_SESSION['user_id'])) {
                         $user_id = $_SESSION['user_id'];
                         // Check if the user has voted for this event and what their vote type is
                         $queryCheckVote = "SELECT vote_type FROM event_votes WHERE user_id = :user_id AND event_id = :event_id";
@@ -157,32 +157,32 @@ try {
                         $stmtCheckVote->execute(['user_id' => $user_id, 'event_id' => $event_id]);
                         $vote = $stmtCheckVote->fetch(PDO::FETCH_ASSOC);
                         $voteType = $vote ? $vote['vote_type'] : '';
-
+                
                         // Set button classes based on vote type
                         $likeClass = $voteType === 'like' ? 'btn-liked' : '';
                         $dislikeClass = $voteType === 'dislike' ? 'btn-disliked' : '';
-
+                
                         // Display like and dislike buttons
-                        echo '<div class="btn-group" role="group">';
-                        echo '<form method="post" style="display: inline-block; margin-right: 10px;">'; // Style added here
+                        echo '<div class="btn-group">';
+                        echo '<form method="post" class="like-form">';
                         echo '<input type="hidden" name="event_id" value="' . $event_id . '">';
                         if ($voteType === 'like') {
-                            echo '<button type="submit" name="unlike" class="btn btn-success custom-button-like ' . $likeClass . '" style="width: 130px;">Unlike</button>'; // Fixed width added here
+                            echo '<button type="submit" name="unlike" class="custom-button-like ' . $likeClass . '">Unlike</button>';
                         } else {
-                            echo '<button type="submit" name="like" class="btn btn-success custom-button-like ' . $likeClass . '" style="width: 130px;">Like</button>'; // Fixed width added here
+                            echo '<button type="submit" name="like" class="custom-button-like ' . $likeClass . '">Like</button>';
                         }
                         echo '</form>';
-
-                        echo '<form method="post" style="display: inline-block;">'; // Style added here
+                
+                        echo '<form method="post" class="dislike-form">';
                         echo '<input type="hidden" name="event_id" value="' . $event_id . '">';
                         if ($voteType === 'dislike') {
-                            echo '<button type="submit" name="undislike" class="btn btn-danger custom-button-dislike ' . $dislikeClass . '" style="width: 130px;">Undislike</button>'; // Fixed width added here
+                            echo '<button type="submit" name="undislike" class="custom-button-dislike ' . $dislikeClass . '">Undislike</button>';
                         } else {
-                            echo '<button type="submit" name="dislike" class="btn btn-danger custom-button-dislike' . $dislikeClass . '" style="width: 130px;">Dislike</button>'; // Fixed width added here
+                            echo '<button type="submit" name="dislike" class="custom-button-dislike ' . $dislikeClass . '">Dislike</button>';
                         }
                         echo '</form>';
                         echo '</div>';
-
+                
                     }
                     
                     echo '</div>';
