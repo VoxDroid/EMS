@@ -71,6 +71,10 @@ try {
     require '../PARTS/CSS.php';
     require '../ASSETS/CSS/custom_design.css';
     ?>
+
+    <style>
+        body {background-color: #405164;}
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -284,7 +288,7 @@ try {
 
     <!-- Comment Section -->
     <div class="container mt-5">
-        <h5>Comments</h5>
+        <h5 class="text-white">Comments</h5>
         <hr style="border: none; height: 4px; background-color: #1c2331;">
         <?php
         if(!isset($_SESSION['user_id'])) {
@@ -299,7 +303,7 @@ try {
             ?>
                 <form method="post">
                     <div class="mb-3">
-                        <label for="comment" class="form-label">Your comment:</label>
+                        <label for="comment" class="form-label text-white">Your comment:</label>
                         <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
                     </div>
                     <button type="submit" name="submit_comment" class="btn btn-primary custom-button-ind">Post Comment</button>
@@ -349,7 +353,7 @@ try {
                     echo '<form id="edit_comment_form" method="post">';
                     echo '<div class="mb-3">';
                     echo '<hr style="border: none; height: 4px; background-color: #1c2331;">';
-                    echo '<label for="edited_comment" class="form-label">Edit Your Comment</label>';
+                    echo '<label for="edited_comment" class="form-label text-white">Edit Your Comment</label>';
                     echo '<textarea class="form-control" id="edited_comment" name="edited_comment" rows="3" required>' . $edit_comment['comment'] . '</textarea>';
                     echo '</div>';
                     echo '<div class="mb-3">';
@@ -514,7 +518,7 @@ try {
                 echo '<div class="card mb-3">';
                 echo '<div class="card-body">';
                 echo '<h6 class="card-subtitle mb-2 text-muted">Commented by: ' . htmlspecialchars($comment['commenter_username']) . ' on ' . htmlspecialchars($comment['date_commented']) . '</h6>';
-                echo '<p class="card-text">'. htmlspecialchars($comment['comment'], ENT_NOQUOTES, 'UTF-8') . '</p>';
+                echo '<p class="card-text text-black">'. htmlspecialchars($comment['comment'], ENT_NOQUOTES, 'UTF-8') . '</p>';
                 echo '<div class="d-flex justify-content-between align-items-center">';
 
                 // Like button

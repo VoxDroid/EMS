@@ -59,6 +59,7 @@ $today = new DateTime();
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../ASSETS/CSS/ml-calendar.css">
     <style>
+        body {background-color: #405164;}
         .calendar-day {
             width: 100px;
             height: 100px;

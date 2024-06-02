@@ -32,7 +32,7 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
     <?php require '../ASSETS/CSS/custom_design.css'; ?>
     <style>
         body {
-            background-color: #1c2331;
+            background-color: #405164;
         }
     </style>
 </head>
@@ -41,7 +41,7 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
 <?php require '../PARTS/header.php'; ?>
 
 <!-- Ongoing Events -->
-<div class="py-5 flex-grow-1" style="background-color: #1c2331">
+<div class="py-5 flex-grow-1" style="background-color: #405164">
     <div class="container">
         <h2 class="text-white">Ongoing Events</h2>
         <hr style="border: none; height: 4px; background-color: #FFFFFF;">

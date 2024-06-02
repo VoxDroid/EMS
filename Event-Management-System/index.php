@@ -32,6 +32,9 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
     <!-- CSS.PHP -->
     <?php require 'PARTS/CSS.php'; ?>
     <?php require 'ASSETS/CSS/custom_design.css'; ?>
+    <style>
+        body {background-color: #405164;}
+    </style>
 
 </head>
 <body>
@@ -167,10 +170,10 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
 <!-- End Main Content -->
 
 <!-- Approved events -->
-<div class="py-5">
+<div class="py-5" style="background-color: #405164;">
     <div class="container">
         <h2>
-            <a href="EMS/events_approved.php" class="custom-heading white-background">
+            <a href="EMS/events_approved.php" class="custom-heading blue-background">
                 Approved Events
                 <i class="bi bi-chevron-right"></i>
             </a>
@@ -403,10 +406,10 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Curr
 <!-- End of Pending Events -->
 
 <!-- Archive Section -->
-<div class="py-5">
+<div class="py-5" style="background-color: #405164;">
     <div class="container">
     <h2>
-            <a href="EMS/events_archived.php" class="custom-heading white-background">
+            <a href="EMS/events_archived.php" class="custom-heading blue-background">
                 Archived Events
                 <i class="bi bi-chevron-right"></i>
             </a>

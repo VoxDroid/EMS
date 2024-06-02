@@ -492,4 +492,43 @@ hr {
 .dislike-form {
     display: inline-block; /* Inline-block display */
 }
+/* Style for event cards */
+.event-card {
+    background-color: #1a1f2d;
+    border: none;
+    border-radius: 10px;
+    transition: scale 0.3s;
+    scale: 1;
+    border: 4px solid #273447;  
+}
+
+.event-card:hover {
+    scale: 1.002;
+    transition: scale 0.3s;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.event-card .profile-picture {
+    border: 2px solid #273447;
+}
+
+/* Additional styling */
+.card-title, .card-text {
+    color: #ffffff;
+}
+
+.text-muted {
+    color: #aab2bd !important;
+}
+
+.like-dislike img {
+    filter: invert(1);
+}
+
+.like-dislike span {
+    color: #ffffff;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
 </style>

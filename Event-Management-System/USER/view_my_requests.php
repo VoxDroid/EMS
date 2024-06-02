@@ -59,6 +59,10 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
     <!-- CSS.PHP -->
     <?php require '../PARTS/CSS.php'; ?>
     <?php require '../ASSETS/CSS/custom_design.css'; ?>
+
+    <style>
+        body {background-color: #405164;}
+    </style>
 </head>
 <body>
 <!-- Header -->
@@ -114,8 +118,8 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
     <div class="container">
 
         <!-- Ongoing Events -->
-        <h2>Ongoing Events</h2>
-        <hr style="border: none; height: 4px; background-color: #1c2331;">
+        <h2 class="text-white">Ongoing Events</h2>
+        <hr style="border: none; height: 4px; background-color: #FFFFFF;">
         <div class="row">
             <?php
             // Ongoing Events Pagination
@@ -144,15 +148,15 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
                 while ($event = $stmtOngoingEvents->fetch(PDO::FETCH_ASSOC)) {
                     // Output ongoing event card
                     echo '<div class="col-md-6 mb-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card event-card">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . htmlspecialchars($event['title'], ENT_QUOTES, 'UTF-8') . '</h5>';
                     echo '<p class="card-text">' . htmlspecialchars($event['description'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '<p class="card-text">Date: ' . htmlspecialchars($event['date_requested'], ENT_QUOTES, 'UTF-8') . '</p>';
                     echo '<a href="../EMS/event_details.php?event_id=' . htmlspecialchars($event['id'], ENT_QUOTES, 'UTF-8') . '" class="btn btn-primary custom-button-ind mt-3">View</a>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                    echo '</div>'; // .card-body
+                    echo '</div>'; // .card
+                    echo '</div>'; // .col-md-6
                 }
             } else {
                 // No ongoing events to show
@@ -197,8 +201,8 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
         </div>
 
         <!-- Approved Events -->
-        <h2>Approved Events</h2>
-        <hr style="border: none; height: 4px; background-color: #1c2331;">
+        <h2 class="text-white">Approved Events</h2>
+        <hr style="border: none; height: 4px; background-color: #FFFFFF;">
         <div class="row">
             <?php
             // Approved Events Pagination
@@ -222,7 +226,7 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
                 while ($event = $stmtApprovedEvents->fetch(PDO::FETCH_ASSOC)) {
                     // Output approved event card
                     echo '<div class="col-md-6 mb-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card event-card">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . htmlspecialchars($event['title'], ENT_QUOTES, 'UTF-8') . '</h5>';
                     echo '<p class="card-text">' . htmlspecialchars($event['description'], ENT_QUOTES, 'UTF-8') . '</p>';
@@ -276,8 +280,8 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
         </div>
 
         <!-- Pending Events -->
-        <h2>Pending Events</h2>
-        <hr style="border: none; height: 4px; background-color: #1c2331;">
+        <h2 class="text-white">Pending Events</h2>
+        <hr style="border: none; height: 4px; background-color: #FFFFFF;">
         <div class="row">
             <?php
             // Pending Events Pagination
@@ -301,7 +305,7 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
                 while ($event = $stmtPendingEvents->fetch(PDO::FETCH_ASSOC)) {
                     // Output pending event card
                     echo '<div class="col-md-6 mb-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card event-card">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . htmlspecialchars($event['title'], ENT_QUOTES, 'UTF-8') . '</h5>';
                     echo '<p class="card-text">' . htmlspecialchars($event['description'], ENT_QUOTES, 'UTF-8') . '</p>';
@@ -378,8 +382,8 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
             ?>
         </div>
 
-        <h2>Completed Events</h2>
-        <hr style="border: none; height: 4px; background-color: #1c2331;">
+        <h2 class="text-white">Completed Events</h2>
+        <hr style="border: none; height: 4px; background-color: #FFFFFF;">
         <div class="row">
             <?php
             // Completed Events Pagination
@@ -403,7 +407,7 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
                 while ($event = $stmtCompletedEvents->fetch(PDO::FETCH_ASSOC)) {
                     // Output completed event card
                     echo '<div class="col-md-6 mb-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card event-card">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . htmlspecialchars($event['title'], ENT_QUOTES, 'UTF-8') . '</h5>';
                     echo '<p class="card-text">' . htmlspecialchars($event['description'], ENT_QUOTES, 'UTF-8') . '</p>';
@@ -456,8 +460,8 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
         </div>
 
         <!-- Denied Events -->
-        <h2>Denied Events</h2>
-            <hr style="border: none; height: 4px; background-color: #1c2331;">
+        <h2 class="text-white">Denied Events</h2>
+            <hr style="border: none; height: 4px; background-color: #FFFFFF;">
         <div class="row">
             <?php
             // Denied Events Pagination
@@ -481,7 +485,7 @@ $stmtOngoingEvents->execute(['userID' => $userID]);
                 while ($event = $stmtDeniedEvents->fetch(PDO::FETCH_ASSOC)) {
                     // Output denied event card
                     echo '<div class="col-md-6 mb-4">';
-                    echo '<div class="card">';
+                    echo '<div class="card event-card">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title">' . htmlspecialchars($event['title'], ENT_QUOTES, 'UTF-8') . '</h5>';
                     echo '<p class="card-text">' . htmlspecialchars($event['description'], ENT_QUOTES, 'UTF-8') . '</p>';

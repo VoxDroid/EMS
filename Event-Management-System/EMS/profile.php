@@ -197,9 +197,6 @@ if (!empty($errors)) {
     <!-- CSS.PHP -->
     <?php require '../PARTS/CSS.php'; ?>
     <style>
-        hr {
-        opacity: 1;
-        }   
         .password-toggle-icon {
             position: absolute;
             top: 75%;

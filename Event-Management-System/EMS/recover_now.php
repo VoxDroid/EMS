@@ -99,7 +99,7 @@ try {
     <!-- Custom CSS -->
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #405164;
             font-family: Poppins, sans-serif;
         }
         .reset-container {
