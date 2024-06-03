@@ -197,31 +197,65 @@ if (!empty($errors)) {
     <!-- CSS.PHP -->
     <?php require '../PARTS/CSS.php'; ?>
     <style>
+        body {background-color: #405164;}
         .password-toggle-icon {
             position: absolute;
-            top: 75%;
+            top: 92.5%;
             right: 15px;
             transform: translateY(-50%);
             cursor: pointer;
+            scale: 2;
         }
-        .submit-btn {
-            background-color: #161c27;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .submit-btn:hover {
-            background-color: #0d1117;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: scale 00.3s;
-            scale: 1.05;
-        }
+        /* Profile card container */
+        .profile-card {
+    background-color: #273447; /* Darker background */
+    border-radius: 15px;
+    border: #161c27 solid 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Profile picture */
+.profile-card img {
+    border-radius: 50%;
+    border: 3px solid #1c2331;
+}
+
+/* Form labels and inputs */
+.profile-card .form-label {
+    color: #aab2bd;
+}
+
+.profile-card .form-control {
+    background-color: #1a1f2d;
+    border: 1px solid #1c2331;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.profile-card .form-control:focus {
+    background-color: #1a1f2d;
+    color: #ffffff;
+    border-color: #5dade2; /* Light blue focus */
+    box-shadow: none;
+}
+
+
+/* Submit button */
+.submit-btn {
+    background-color: #5dade2; /* Light blue button */
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+}
+
     </style>
 </head>
 <body>
@@ -249,57 +283,57 @@ if (!empty($errors)) {
             unset($_SESSION['success_message']); // Clear message after displaying
         }
         ?>
-        <h2>My Profile</h2>
-        <hr style="border: none; height: 4px; background-color: #1c2331;">
-        <form id="profileForm" method="post" enctype="multipart/form-data">
+        <div class="profile-card">
+    <h2>My Profile</h2>
+    <hr style="border: none; height: 4px; background-color: #1c2331;">
+    <form id="profileForm" method="post" enctype="multipart/form-data">
         <div class="mb-3 text-center">
-                <?php if (!empty($user['profile_picture'])): ?>
-                    <img src="<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture" class="img-thumbnail" style="width: 150px; height: 150px;">
-                <?php else: ?>
-                    <p>N/A</p>
-                <?php endif; ?>
-            </div>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" minlength="3">
-            </div>
-            <div class="mb-3 position-relative">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" minlength="8">
-                <span class="password-toggle-icon bi bi-eye-slash" onclick="togglePasswordVisibility('password')"></span>
-            </div>
-            <div class="mb-3">
-                <label for="gender" class="form-label">Gender</label>
-                <select class="form-control" id="gender" name="gender">
-                    <option value="male" <?php echo $user['gender'] == 'male' ? 'selected' : ''; ?>>Male</option>
-                    <option value="female" <?php echo $user['gender'] == 'female' ? 'selected' : ''; ?>>Female</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>">
-            </div>
-            <div class="mb-3">
-                <label for="profile_picture" class="form-label">Profile Picture</label>
-                <input type="file" class="form-control" id="profile_picture" name="profile_picture">
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="remove_picture" name="remove_picture" onchange="handleRemovePicture()">
-                <label class="form-check-label" for="remove_picture">Remove Profile Picture</label>
-            </div>
-            <input type="hidden" name="update_account" value="1">
-            <!-- Button to trigger modal -->
-            <button type="button" class="btn btn-primary submit-btn" data-bs-toggle="modal" data-bs-target="#confirmModal">Save Changes</button>
-
-            <!-- Save Changes Confirmation Modal -->
-            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <?php if (!empty($user['profile_picture'])): ?>
+                <img src="<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture" class="img-thumbnail" style="width: 150px; height: 150px;">
+            <?php else: ?>
+                <p>N/A</p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" minlength="3">
+        </div>
+        <div class="mb-3 position-relative">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" minlength="8">
+            <span class="password-toggle-icon bi bi-eye-slash" onclick="togglePasswordVisibility('password')"></span>
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-control" id="gender" name="gender">
+                <option value="male" <?php echo $user['gender'] == 'male' ? 'selected' : ''; ?>>Male</option>
+                <option value="female" <?php echo $user['gender'] == 'female' ? 'selected' : ''; ?>>Female</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>">
+        </div>
+        <div class="mb-3">
+            <label for="profile_picture" class="form-label">Profile Picture</label>
+            <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="remove_picture" name="remove_picture" onchange="handleRemovePicture()">
+            <label class="form-check-label" for="remove_picture">Remove Profile Picture</label>
+        </div>
+        <input type="hidden" name="update_account" value="1">
+        <!-- Button to trigger modal -->
+        <button type="button" class="btn btn-primary submit-btn" data-bs-toggle="modal" data-bs-target="#confirmModal">Save Changes</button>
+        <!-- Save Changes Confirmation Modal -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="confirmModalLabel">Confirm Save Changes</h5>
+                            <h5 class="modal-title text-black" id="confirmModalLabel">Confirm Save Changes</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-black">
                             Are you sure you want to save the changes?
                         </div>
                         <div class="modal-footer">
@@ -310,6 +344,10 @@ if (!empty($errors)) {
                 </div>
             </div>
         </form>
+</div>
+
+
+            
     </div>
 </main>
 

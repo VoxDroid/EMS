@@ -103,8 +103,8 @@ require '../PARTS/managedb_restore.php';
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Backup Database</h5>
-                        <p class="card-text">Create a backup of the database for security purposes.</p>
+                        <h5 class="card-title text-black">Backup Database</h5>
+                        <p class="card-text text-black">Create a backup of the database for security purposes.</p>
                         <button type="button" class="btn btn-primary custom-button-md" data-bs-toggle="modal" data-bs-target="#backupModal">Backup Now</button>
                     </div>
                 </div>
@@ -112,8 +112,8 @@ require '../PARTS/managedb_restore.php';
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Restore Database</h5>
-                        <p class="card-text">Restore the database from a previous backup.</p>
+                        <h5 class="card-title text-black">Restore Database</h5>
+                        <p class="card-text text-black">Restore the database from a previous backup.</p>
                         <button type="button" class="btn btn-primary custom-button-md" data-bs-toggle="modal" data-bs-target="#confirmPasswordModal">Restore Now</button>
                     </div>
                 </div>
@@ -121,8 +121,8 @@ require '../PARTS/managedb_restore.php';
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Export Data (Coming Soon)</h5>
-                        <p class="card-text">Export data from selected tables to a file.</p>
+                        <h5 class="card-title text-black">Export Data (Coming Soon)</h5>
+                        <p class="card-text text-black">Export data from selected tables to a file.</p>
                         <a href="#" class="btn btn-primary custom-button-md">Export Now</a>
                     </div>
                 </div>
@@ -130,8 +130,8 @@ require '../PARTS/managedb_restore.php';
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Import Data (Coming Soon)</h5>
-                        <p class="card-text">Import data from a file into the database.</p>
+                        <h5 class="card-title text-black">Import Data (Coming Soon)</h5>
+                        <p class="card-text text-black">Import data from a file into the database.</p>
                         <a href="#" class="btn btn-primary custom-button-md">Import Now</a>
                     </div>
                 </div>
@@ -139,8 +139,8 @@ require '../PARTS/managedb_restore.php';
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Optimize Tables (Coming Soon)</h5>
-                        <p class="card-text">Optimize all database tables for better performance.</p>
+                        <h5 class="card-title text-black">Optimize Tables (Coming Soon)</h5>
+                        <p class="card-text text-black">Optimize all database tables for better performance.</p>
                         <a href="#" class="btn btn-primary custom-button-md">Optimize Now</a>
                     </div>
                 </div>
@@ -148,8 +148,8 @@ require '../PARTS/managedb_restore.php';
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">View Database Structure (Coming Soon)</h5>
-                        <p class="card-text">View the structure of the database tables.</p>
+                        <h5 class="card-title text-black">View Database Structure (Coming Soon)</h5>
+                        <p class="card-text text-black">View the structure of the database tables.</p>
                         <a href="#" class="btn btn-primary custom-button-md">View Now</a>
                     </div>
                 </div>

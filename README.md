@@ -63,6 +63,11 @@ Welcome to EMS (Event Management System), an open-source project designed to sim
   <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo1.png">
   <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo2.png">
   <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo3.png">
+  <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo4.png">
+  <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo5.png">
+  <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo6.png">
+  <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo7.png">
+  <img src="https://raw.githubusercontent.com/VoxDroid/EMS/main/Demo%20Images%20and%20Logo/Demo8.png">
 </div>
 <br/>
 

@@ -253,7 +253,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 mx-auto text-center">
             <div class="register-container">
-                <img src="../ASSETS/IMG/EMS_icons/EMS_icon.png" width="150" height="150" alt="EMS" class="img-fluid mb-3">
+            <a href="../index.php"><img src="../ASSETS/IMG/EMS_icons/EMS_icon.png" width="150" height="150" alt="EMS"  class="img-fluid mb-3"></a>
                 <h2 class="register-title">REGISTER</h2>
                 <?php if (isset($error)) : ?>
                     <div class="alert alert-danger" role="alert">

@@ -188,7 +188,7 @@ try {
                         <?php echo $error; ?>
                     </div>
                 <?php endif; ?>
-                <img src="../ASSETS/IMG/EMS_icons/EMS_icon.png" width="150" height="150" alt="EMS" class="img-fluid mb-3">
+                <a href="../index.php"><img src="../ASSETS/IMG/EMS_icons/EMS_icon.png" width="150" height="150" alt="EMS"  class="img-fluid mb-3"></a>
                 <h2 class="recover-title">Forgot Password</h2>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="recover-form">
                     <div class="form-group">

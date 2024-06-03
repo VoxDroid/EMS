@@ -74,6 +74,7 @@ try {
 
     <style>
         body {background-color: #405164;}
+        /* Form container */
     </style>
 </head>
 <body>
@@ -301,13 +302,14 @@ try {
             // Check if the user has exceeded the comment limit per hour
             if(!hasExceededCommentLimit($pdo, $user_id, $comment_limit, $hour_limit)) {
             ?>
-                <form method="post">
-                    <div class="mb-3">
-                        <label for="comment" class="form-label text-white">Your comment:</label>
-                        <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" name="submit_comment" class="btn btn-primary custom-button-ind">Post Comment</button>
-                </form>
+                <form method="post" class="custom-form">
+    <div class="mb-3">
+        <label for="comment" class="form-label custom-form-label">Your comment:</label>
+        <textarea class="form-control custom-form-textarea" id="comment" name="comment" rows="3" required></textarea>
+    </div>
+    <button type="submit" name="submit_comment" class="btn custom-button-indevent">Post Comment</button>
+</form>
+
             <?php } else { ?>
                 <p class="alert alert-warning">You have reached the maximum comment limit per hour.</p>
             <?php } ?>
@@ -350,19 +352,19 @@ try {
                 $edit_comment = $stmtGetComment->fetch(PDO::FETCH_ASSOC);
                 if ($edit_comment) {
                     // Display edit form
-                    echo '<form id="edit_comment_form" method="post">';
+                    echo '<hr style="border: none; height: 4px; background-color: #1c2331;" id="edit-comment-form-hr1">';
+                    echo '<form id="edit_comment_form" method="post" class="custom-form">';
                     echo '<div class="mb-3">';
-                    echo '<hr style="border: none; height: 4px; background-color: #1c2331;">';
-                    echo '<label for="edited_comment" class="form-label text-white">Edit Your Comment</label>';
-                    echo '<textarea class="form-control" id="edited_comment" name="edited_comment" rows="3" required>' . $edit_comment['comment'] . '</textarea>';
+                    echo '<label for="edited_comment" class="form-label custom-form-label text-white">Edit Your Comment</label>';
+                    echo '<textarea class="form-control custom-form-textarea" id="edited_comment" name="edited_comment" rows="3" required>' . $edit_comment['comment'] . '</textarea>';
                     echo '</div>';
                     echo '<div class="mb-3">';
-                    echo '<button type="submit" name="submit_edit_comment" class="btn btn-primary me-3 custom-button-ind">Submit</button>';
+                    echo '<button type="submit" name="submit_edit_comment" class="btn btn-primary me-3 custom-button-indevent">Submit</button>';
                     echo '<button type="button" class="btn btn-secondary" id="cancel_edit">Cancel</button>';
-                    echo '<hr style="border: none; height: 4px; background-color: #1c2331;">';
                     echo '<input type="hidden" name="edit_comment_id" value="' . $edit_comment_id . '">';
                     echo '</div>';
                     echo '</form>';
+                    echo '<hr style="border: none; height: 4px; background-color: #1c2331;" id="edit-comment-form-hr2">';
                 } else {
                     echo '<p class="alert alert-danger">Comment not found.</p>';
                 }
@@ -372,6 +374,8 @@ try {
             echo '<script>
             document.getElementById("cancel_edit").addEventListener("click", function() {
                 document.getElementById("edit_comment_form").style.display = "none";
+                document.getElementById("edit-comment-form-hr1").style.display = "none";
+                document.getElementById("edit-comment-form-hr2").style.display = "none";
             });
             </script>';
 
@@ -499,56 +503,64 @@ try {
             $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
             $offset = ($current_page - 1) * $comments_per_page;
 
-            $queryComments = "SELECT c.*, u.username AS commenter_username, 
-            (SELECT COUNT(*) FROM comment_votes WHERE comment_id = c.id AND vote_type = 'like') AS likes,
-            (SELECT COUNT(*) FROM comment_votes WHERE comment_id = c.id AND vote_type = 'dislike') AS dislikes
-            FROM comments c 
-            JOIN users u ON c.user_id = u.id 
-            WHERE c.event_id = :event_id
-            ORDER BY c.date_commented DESC LIMIT :offset, :comments_per_page"; // Order by date in descending order
-            $stmtComments = $pdo->prepare($queryComments);
-            $stmtComments->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-            $stmtComments->bindParam(':offset', $offset, PDO::PARAM_INT);
-            $stmtComments->bindParam(':comments_per_page', $comments_per_page, PDO::PARAM_INT);
-            $stmtComments->execute();
-            $comments = $stmtComments->fetchAll(PDO::FETCH_ASSOC);
+            $queryComments = "SELECT c.*, u.username AS commenter_username, u.profile_picture,
+    (SELECT COUNT(*) FROM comment_votes WHERE comment_id = c.id AND vote_type = 'like') AS likes,
+    (SELECT COUNT(*) FROM comment_votes WHERE comment_id = c.id AND vote_type = 'dislike') AS dislikes
+    FROM comments c 
+    JOIN users u ON c.user_id = u.id 
+    WHERE c.event_id = :event_id
+    ORDER BY c.date_commented DESC LIMIT :offset, :comments_per_page"; // Order by date in descending order
+$stmtComments = $pdo->prepare($queryComments);
+$stmtComments->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+$stmtComments->bindParam(':offset', $offset, PDO::PARAM_INT);
+$stmtComments->bindParam(':comments_per_page', $comments_per_page, PDO::PARAM_INT);
+$stmtComments->execute();
+$comments = $stmtComments->fetchAll(PDO::FETCH_ASSOC);
 
-            // Display comments
-            foreach ($comments as $comment) {
-                echo '<div class="card mb-3">';
-                echo '<div class="card-body">';
-                echo '<h6 class="card-subtitle mb-2 text-muted">Commented by: ' . htmlspecialchars($comment['commenter_username']) . ' on ' . htmlspecialchars($comment['date_commented']) . '</h6>';
-                echo '<p class="card-text text-black">'. htmlspecialchars($comment['comment'], ENT_NOQUOTES, 'UTF-8') . '</p>';
-                echo '<div class="d-flex justify-content-between align-items-center">';
+// Display comments
+foreach ($comments as $comment) {
+    echo '<div class="custom-comment-card">';
+    echo '<div class="card-body">';
+    
+    // Commenter info with profile picture
+    echo '<div class="custom-commenter-info">';
+    $profilePicture = $comment['profile_picture'];
+    echo '<img src="' . $profilePicture . '" class="profile-picture" width="50" height="50" alt="Profile Picture">';
+    echo '<h6>Commented by:<strong> ' . htmlspecialchars($comment['commenter_username']) . '</strong> on ' . htmlspecialchars($comment['date_commented']) . '</h6>';
+    echo '</div>';
+    
+    // Comment text
+    echo '<p class="custom-comment-text">' . htmlspecialchars($comment['comment'], ENT_NOQUOTES, 'UTF-8') . '</p>';
+    
+    // Like and Dislike buttons
+    echo '<div class="d-flex justify-content-between align-items-center">';
+    echo '<form method="post" style="display: inline-block;">';
+    echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
+    echo '<button type="submit" name="like_comment" class="btn btn-outline-primary custom-button-like me-2">Like (' . $comment['likes'] . ')</button>';
+    echo '</form>';
 
-                // Like button
-                echo '<form method="post" style="display: inline-block;">';
-                echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
-                echo '<button type="submit" name="like_comment" class="btn btn-outline-primary me-2 custom-button-like">Like (' . $comment['likes'] . ')</button>';
-                echo '</form>';
+    echo '<form method="post" style="display: inline-block;">';
+    echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
+    echo '<button type="submit" name="dislike_comment" class="btn btn-outline-danger custom-button-dislike">Dislike (' . $comment['dislikes'] . ')</button>';
+    echo '</form>';
 
-                // Dislike button
-                echo '<form method="post" style="display: inline-block;">';
-                echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
-                echo '<button type="submit" name="dislike_comment" class="btn btn-outline-danger custom-button-dislike">Dislike (' . $comment['dislikes'] . ')</button>';
-                echo '</form>';
-
-                // Edit and delete buttons
-                if(isset($_SESSION['user_id']) && $comment['user_id'] === $_SESSION['user_id']) {
-                    echo '<div class="ms-auto">';
-                    echo '<form method="post" style="display: inline-block;">';
-                    echo '<button type="button" class="btn btn-outline-danger delete-comment-btn me-2 custom-button-delete" data-comment-id="' . $comment['id'] . '">Delete</button>';
-                    echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
-                    echo '</form>';
-                    echo '<form method="post" style="display: inline-block;">';
-                    echo '<button type="submit" name="edit_comment" class="btn btn-outline-secondary custom-button-purple">Edit</button>';
-                    echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
-                    echo '</form>';
-                    echo '</div>';
-                }
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
+    // Edit and delete buttons
+    if(isset($_SESSION['user_id']) && $comment['user_id'] === $_SESSION['user_id']) {
+        echo '<div class="ms-auto">';
+        echo '<form method="post" style="display: inline-block;">';
+        echo '<button type="button" class="btn btn-outline-danger delete-comment-btn me-2 custom-button-delete" data-comment-id="' . $comment['id'] . '">Delete</button>';
+        echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
+        echo '</form>';
+        
+        echo '<form method="post" style="display: inline-block;">';
+        echo '<button type="submit" name="edit_comment" class="btn btn-outline-secondary custom-button-edit custom-button-purple">Edit</button>';
+        echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
+        echo '</form>';
+        echo '</div>';
+    }
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
             }
             ?>
         </div>

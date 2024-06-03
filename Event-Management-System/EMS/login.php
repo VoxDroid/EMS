@@ -201,7 +201,7 @@ if ($_SESSION['login_attempts'] >= 8 && isset($_SESSION['last_login_attempt_time
                     unset($_SESSION['registration_successful']);
                 }
                 ?>
-                <img src="../ASSETS/IMG/EMS_icons/EMS_icon.png" width="150" height="150" alt="EMS" class="img-fluid mb-3">
+                <a href="../index.php"><img src="../ASSETS/IMG/EMS_icons/EMS_icon.png" width="150" height="150" alt="EMS"  class="img-fluid mb-3"></a>
                 <h2 class="login-title">LOGIN</h2>
                 <?php if (!empty($error)) : ?>
                     <div class="alert alert-danger" role="alert">
