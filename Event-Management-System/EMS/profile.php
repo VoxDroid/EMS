@@ -22,9 +22,9 @@ $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 // Process form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_account'])) {
     // Validate and sanitize username
-    if (isset($_POST['username'])) {
+    if (!empty($_POST['username'])) {
         $newUsername = trim($_POST['username']);
-        if (!empty($newUsername) && !preg_match('/^[a-zA-Z0-9_]{3,}$/', $newUsername)) {
+        if (!preg_match('/^[a-zA-Z0-9_]{3,}$/', $newUsername)) {
             $errors[] = "Username must be at least 3 characters long and can only contain letters, numbers, and underscores.";
         }
     } else {
@@ -32,11 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_account'])) {
     }
 
     // Validate and sanitize password
-    if (isset($_POST['password'])) {
+    if (!empty($_POST['password'])) {
         $newPassword = trim($_POST['password']);
-        if (!empty($newPassword) && strlen($newPassword) < 8) {
+        if (strlen($newPassword) < 8) {
             $errors[] = "Password must be at least 8 characters long.";
-        } elseif (!empty($newPassword)) {
+        } else {
             $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
         }
     } else {
@@ -47,9 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_account'])) {
     $newGender = isset($_POST['gender']) ? $_POST['gender'] : $user['gender'];
 
     // Validate and sanitize email
-    if (isset($_POST['email'])) {
+    if (!empty($_POST['email'])) {
         $newEmail = trim($_POST['email']);
-        if (!empty($newEmail) && !filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Invalid email format.";
         }
     } else {
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_account'])) {
     }
 
     // Check if username already exists
-    if (!empty($newUsername)) {
+    if (!empty($newUsername) && $newUsername !== $user['username']) {
         $queryUsernameCheck = "SELECT id FROM users WHERE username = :username AND id != :id";
         $stmtUsernameCheck = $pdo->prepare($queryUsernameCheck);
         $stmtUsernameCheck->bindParam(':username', $newUsername);
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_account'])) {
     }
 
     // Check if email already exists
-    if (!empty($newEmail)) {
+    if (!empty($newEmail) && $newEmail !== $user['email']) {
         $queryEmailCheck = "SELECT id FROM users WHERE email = :email AND id != :id";
         $stmtEmailCheck = $pdo->prepare($queryEmailCheck);
         $stmtEmailCheck->bindParam(':email', $newEmail);
@@ -82,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_account'])) {
         }
     }
 
-    // Handle profile picture upload
-    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+    // Handle profile picture upload if provided
+    if (!empty($_FILES['profile_picture']['name']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = '../UPLOADS/img/USERS/';
         
         // Create directory if it doesn't exist

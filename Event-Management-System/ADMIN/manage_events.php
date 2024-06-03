@@ -68,6 +68,15 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         border-top-right-radius: 5px; 
         }
     </style>
+    <style>
+    .custom-no-events {
+        color: #161c27; /* Custom text color */
+        font-size: 18px; /* Custom font size */
+        text-align: center; /* Center align the text */
+        /* Add more styles as per your design */
+    }
+</style>
+
 </head>
 <body>
 
@@ -371,8 +380,8 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </ul>
                 </nav>
             <?php } else {
-                // No pending events
-                echo "<p class='mt-3'>No pending events found.</p>";
+                echo "<p class='mt-3 custom-no-events'>No pending events found.</p>";
+
             }
             ?>
         </div>
@@ -483,7 +492,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </nav>
             <?php } else {
                 // No ongoing events
-                echo "<p class='mt-3'>No ongoing events found.</p>";
+                echo "<p class='mt-3 custom-no-events'>No ongoing events found.</p>";
             }
             ?>
         </div>
@@ -594,7 +603,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </nav>
         <?php } else {
             // No approved events
-            echo "<p class='mt-3'>No approved events found.</p>";
+            echo "<p class='mt-3 custom-no-events'>No approved events found.</p>";
         }
         ?>
     </div>
@@ -704,7 +713,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </nav>
         <?php } else {
             // No completed events
-            echo "<p class='mt-3'>No completed events found.</p>";
+            echo "<p class='mt-3 custom-no-events'>No completed events found.</p>";
         }
         ?>
     </div>
@@ -815,7 +824,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </nav>
         <?php } else {
             // No denied events
-            echo "<p class='mt-3'>No denied events found.</p>";
+            echo "<p class='mt-3 custom-no-events'>No denied events found.</p>";
         }
         ?>
     </div>
